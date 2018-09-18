@@ -15,14 +15,18 @@
  */
 package de.shadowhunt.subversion;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
+
+import javax.annotation.concurrent.Immutable;
 
 import org.apache.commons.lang3.StringUtils;
 
 /**
  * {@link Resource} defines a resource location in the repository.
  */
-public final class Resource implements Comparable<Resource> {
+@Immutable
+public final class Resource implements Comparable<Resource>, Serializable {
 
     private static final Pattern PATH_PATTERN = Pattern.compile("/");
 
@@ -41,10 +45,13 @@ public final class Resource implements Comparable<Resource> {
      */
     public static final char SEPARATOR_CHAR = '/';
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a new {@link Resource} instance for the given value.
      *
-     * @param path value of the {@link Resource}
+     * @param path
+     *            value of the {@link Resource}
      *
      * @return the new {@link Resource} instance with the given value
      */
@@ -67,7 +74,8 @@ public final class Resource implements Comparable<Resource> {
             sb.append(segment);
         }
 
-        return new Resource(sb.toString());
+        final String sanatisedPath = sb.toString();
+        return new Resource(sanatisedPath);
     }
 
     private final String value;
@@ -79,7 +87,8 @@ public final class Resource implements Comparable<Resource> {
     /**
      * Appends the specified {@link Resource} to the end of this {@link Resource}.
      *
-     * @param resource the {@link Resource} that is appended to the end of this {@link Resource}
+     * @param resource
+     *            the {@link Resource} that is appended to the end of this {@link Resource}
      *
      * @return a {@link Resource} that represents the combination of this {@link Resource} and the specified {@link Resource}
      */
@@ -117,7 +126,8 @@ public final class Resource implements Comparable<Resource> {
             return ROOT; // parent of root is root
         }
         final int indexOf = value.lastIndexOf(SEPARATOR_CHAR);
-        return new Resource(value.substring(0, indexOf));
+        final String parentPath = value.substring(0, indexOf);
+        return new Resource(parentPath);
     }
 
     /**
@@ -149,7 +159,8 @@ public final class Resource implements Comparable<Resource> {
     /**
      * Returns {@code true} if this {@link Resource} is a prefix of the given {@link Resource}.
      *
-     * @param other {@link Resource} to check against this {@link Resource}
+     * @param other
+     *            {@link Resource} to check against this {@link Resource}
      *
      * @return {@code true} if this {@link Resource} is a prefix of the given {@link Resource}
      */

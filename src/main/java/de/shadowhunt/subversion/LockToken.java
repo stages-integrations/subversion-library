@@ -15,8 +15,14 @@
  */
 package de.shadowhunt.subversion;
 
+import javax.annotation.concurrent.Immutable;
+
 import org.apache.commons.lang3.Validate;
 
+/**
+ * {@link LockToken} holds key for a {@link Resource}, that has been marked by an user.
+ */
+@Immutable
 public final class LockToken {
 
     private final String token;
@@ -36,11 +42,9 @@ public final class LockToken {
         }
 
         final LockToken lockToken = (LockToken) o;
-
         if (!token.equals(lockToken.token)) {
             return false;
         }
-
         return true;
     }
 

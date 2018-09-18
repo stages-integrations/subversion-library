@@ -81,7 +81,8 @@ final class ProbeReader {
                     sb.append(Resource.SEPARATOR_CHAR);
                     sb.append(segments[i]);
                 }
-                final Resource basePath = Resource.create(sb.toString());
+                final String value = sb.toString();
+                final Resource basePath = Resource.create(value);
                 probe = new Probe(basePath, prefix);
             }
         }
