@@ -61,6 +61,7 @@ final class InfoImplReader {
                     new StringExpression(new QName(XmlConstants.DAV_NAMESPACE, "version-name")), //
 
                     new StatusExpression(), // throws exception on error
+                    new AbsoluteResourceExpression(),
             };
         }
 
@@ -103,6 +104,9 @@ final class InfoImplReader {
 
             final Optional<String> revision = ((StringExpression) children[8]).getValue();
             revision.ifPresent(x -> info.setRevision(Revision.create(Integer.parseInt(x))));
+
+            final Optional<Resource> absoluteResource = ((AbsoluteResourceExpression) children[10]).getValue();
+            absoluteResource.ifPresent(info::setAbsoluteResource);
 
             entries.add(info);
 
@@ -192,6 +196,37 @@ final class InfoImplReader {
             final Resource qualifiedResource = Resource.create(text);
             final String relative = StringUtils.removeStart(qualifiedResource.getValue(), basePath.getValue());
             resource = Optional.of(Resource.create(relative));
+        }
+
+        @Override
+        public void resetHandler() {
+            resource = Optional.empty();
+        }
+    }
+
+    private static class AbsoluteResourceExpression extends AbstractSaxExpression<Resource> {
+
+        private static final QName[] PATH = { //
+                new QName(XmlConstants.DAV_NAMESPACE, "propstat"), //
+                new QName(XmlConstants.DAV_NAMESPACE, "prop"), //
+                new QName(XmlConstants.SUBVERSION_DAV_NAMESPACE, "baseline-relative-path") //
+        };
+
+        private Optional<Resource> resource = Optional.empty();
+
+        AbsoluteResourceExpression() {
+            super(PATH);
+        }
+
+        @Override
+        public Optional<Resource> getValue() {
+            return resource;
+        }
+
+        @Override
+        protected void processEnd(final String nameSpaceUri, final String localName, final String text) {
+            final Resource qualifiedResource = Resource.create(text);
+            resource = Optional.of(qualifiedResource);
         }
 
         @Override

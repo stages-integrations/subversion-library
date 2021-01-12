@@ -54,6 +54,8 @@ final class InfoImpl implements Info {
 
     private Revision revision = null;
 
+    private Resource absoluteResource = null;
+
     InfoImpl() {
         // prevent direct instantiation
     }
@@ -122,6 +124,10 @@ final class InfoImpl implements Info {
         return resource;
     }
 
+    public Resource getAbsoluteResource() {
+        return absoluteResource;
+    }
+
     @Override
     public Revision getRevision() {
         return revision;
@@ -188,6 +194,10 @@ final class InfoImpl implements Info {
 
     void setResource(final Resource resource) {
         this.resource = resource;
+    }
+
+    public void setAbsoluteResource(final Resource absoluteResource) {
+        this.absoluteResource = absoluteResource;
     }
 
     void setRevision(final Revision revision) {

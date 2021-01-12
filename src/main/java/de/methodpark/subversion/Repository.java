@@ -129,6 +129,20 @@ public interface Repository {
     /**
      * Download the resource.
      *
+     * @param resource the {@link Resource} of the resource (absolute to the repository root)
+     * @param revision the {@link Revision} of the resource to retrieve
+     *
+     * @return {@link InputStream} from which the content can be read (caller has to close the stream properly)
+     *
+     * @throws java.lang.NullPointerException if any parameter is {@code null}
+     * @throws SubversionException if an error occurs while operating on the repository
+     * @throws TransmissionException if an error occurs in the underlining communication with the server
+     */
+    InputStream downloadAbsolute(Resource resource, Revision revision);
+
+    /**
+     * Download the resource.
+     *
      * @param view the current valid {@link View}
      * @param resource the {@link Resource} of the resource (relative to the repository root)
      * @param revision the {@link Revision} of the resource to retrieve

@@ -94,6 +94,13 @@ public interface Info {
     Resource getResource();
 
     /**
+     * Returns a {@link Resource} of the resource (absolute to the root of the repository).
+     *
+     * @return the {@link Resource} of the resource (absolute to the root of the repository)
+     */
+    Resource getAbsoluteResource();
+
+    /**
      * Returns a {@link Revision} of the resource.
      *
      * @return the {@link Revision} of the resource

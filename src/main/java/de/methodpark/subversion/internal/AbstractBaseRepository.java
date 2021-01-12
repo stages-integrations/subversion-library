@@ -249,6 +249,19 @@ public abstract class AbstractBaseRepository implements Repository {
         return download0(view, new QualifiedResource(base, resource), revision);
     }
 
+    @Override
+    public InputStream downloadAbsolute(final Resource resource, final Revision revision) {
+        final View view = createView();
+        Validate.notNull(view, "view must not be null");
+        Validate.notNull(resource, "resource must not be null");
+        Validate.notNull(revision, "revision must not be null");
+        validateRevision(view, revision);
+
+        LOGGER.trace("downloading resource {}@{}", resource, revision);
+        final QualifiedResource qualifiedResource = new QualifiedResource(resource);
+        return download0(view, qualifiedResource, revision);
+    }
+
     private InputStream download0(final View view, final QualifiedResource resource, final Revision revision) {
         final QualifiedResource resolved = resolve(view, resource, revision, false);
         final DownloadOperation operation = new DownloadOperation(repository, resolved);
