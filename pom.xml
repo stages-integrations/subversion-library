@@ -401,7 +401,7 @@
                         <index>true</index>
                         <manifestEntries>
                             <Built-By>${project.organization.name}</Built-By>
-                            <Main-Class>de.shadowhunt.subversion.cmdl.Main</Main-Class>
+                            <Main-Class>de.methodpark.subversion.cmdl.Main</Main-Class>
                         </manifestEntries>
                     </archive>
                     <descriptorRefs>

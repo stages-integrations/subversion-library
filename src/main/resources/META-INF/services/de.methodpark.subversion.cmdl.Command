@@ -1,0 +1,16 @@
+de.methodpark.subversion.cmdl.CheckinCommand
+de.methodpark.subversion.cmdl.CopyCommand
+de.methodpark.subversion.cmdl.DeleteCommand
+de.methodpark.subversion.cmdl.DownloadCommand
+de.methodpark.subversion.cmdl.ExistsCommand
+de.methodpark.subversion.cmdl.HelpCommand
+de.methodpark.subversion.cmdl.InfoCommand
+de.methodpark.subversion.cmdl.ListCommand
+de.methodpark.subversion.cmdl.LockCommand
+de.methodpark.subversion.cmdl.LogCommand
+de.methodpark.subversion.cmdl.MkdirCommand
+de.methodpark.subversion.cmdl.MoveCommand
+de.methodpark.subversion.cmdl.ProbeCommand
+de.methodpark.subversion.cmdl.PropertiesDeleteCommand
+de.methodpark.subversion.cmdl.PropertiesSetCommand
+de.methodpark.subversion.cmdl.UnlockCommand
