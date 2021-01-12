@@ -19,20 +19,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.shadowhunt</groupId>
+    <groupId>de.methodpark</groupId>
     <artifactId>subversion</artifactId>
-    <version>4.0.0</version>
+    <version>5.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!-- project information {{{1 -->
-    <name>Shadowhunt Subversion</name>
-    <description>Streaming subversion library without the need for a local sandbox</description>
-    <url>https://github.com/thrawn-sh/subversion</url>
-    <inceptionYear>2013</inceptionYear>
+    <name>Method Park Subversion Library</name>
+    <description>Fork of the subversion library from authored by Alexander Dreweke (https://dev.shadowhunt.de)</description>
+    <inceptionYear>2021</inceptionYear>
 
     <organization>
-        <name>shadowhunt</name>
-        <url>https://dev.shadowhunt.de</url>
+        <name>Method Park</name>
+        <url>https://www.methodpark.de/</url>
     </organization>
 
     <licenses>
@@ -54,23 +53,23 @@
     <!-- }}}1 -->
 
     <!-- environment information {{{1 -->
-    <scm>
+    <!--scm> TODO
         <connection>scm:git:https://github.com/thrawn-sh/subversion.git</connection>
         <developerConnection>scm:git:https://scm.shadowhunt.de/subversion.git</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/thrawn-sh/subversion</url>
-    </scm>
+    </scm-->
 
     <distributionManagement>
         <repository>
-            <id>sonatype</id>
-            <name>Sonatype (Maven Central) Staging Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>stages-integrations-build</id>
+            <name>MethodPark Local Release Repository</name>
+            <url>https://stages-integrations-build.er.methodpark.de/nexus/repository/local-release/</url>
         </repository>
         <snapshotRepository>
-            <id>shadowhunt</id>
-            <name>Shadowhunt Local Snapshot Repository</name>
-            <url>https://maven.shadowhunt.de/local-snapshot</url>
+            <id>stages-integrations-build</id>
+            <name>MethodPark Local Snapshot Repository</name>
+            <url>https://stages-integrations-build.er.methodpark.de/nexus/repository/local-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
     <!-- }}}1 -->
@@ -189,7 +188,7 @@
                     <sortModules>true</sortModules>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--plugin> TODO What should be done with license
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>3.0</version>
@@ -219,8 +218,9 @@
                         <project.inceptionYear>${build.copyright.year}</project.inceptionYear>
                         <email>dev@shadowhunt.de</email>
                     </properties>
+                    <skip>true</skip>
                 </configuration>
-            </plugin>
+            </plugin-->
             <plugin>
                 <groupId>com.redhat.rcm.maven.plugin</groupId>
                 <artifactId>buildmetadata-maven-plugin</artifactId>
@@ -530,24 +530,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- shadowhunt package -->
-                    <keyname>77103E0B</keyname>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
                 <version>3.0.1</version>
             </plugin>
@@ -570,7 +552,6 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Built-By>dev@shadowhunt.de</Built-By>
                             <Implementation-Build>${build.version.full}</Implementation-Build>
                         </manifestEntries>
                     </archive>
@@ -750,7 +731,7 @@
                 </executions>
                 <configuration>
                     <includes>
-                        <include>de/shadowhunt/subversion/**</include>
+                        <include>de/methodpark/subversion/**</include>
                     </includes>
                 </configuration>
             </plugin>
