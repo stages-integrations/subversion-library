@@ -1,8 +1,10 @@
-# Shadowhunt Subversion Library
+# Subversion Library
 
-The Shadowhunt Subversion library provides a simple JAVA interface to
+The Subversion library provides a simple JAVA interface to
 [Subversion](http://subversion.apache.org/) servers through http or https
 interface. It doesn't rely on the subversion command-line client.
+
+This repository is a fork from https://github.com/thrawn-sh/subversion/. It is independent from the original repository.
 
 The main purpose of this library is to access and manipulate a subversion
 repository without having to checkout the repository to the local system first.

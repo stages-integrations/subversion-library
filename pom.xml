@@ -21,7 +21,7 @@
 
     <groupId>de.methodpark</groupId>
     <artifactId>subversion</artifactId>
-    <version>5.0.0-SNAPSHOT</version>
+    <version>5.0.0</version>
     <packaging>jar</packaging>
 
     <!-- project information {{{1 -->
@@ -42,24 +42,9 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>thrawn</id>
-            <name>Alexander Dreweke</name>
-            <email>thrawn@shadowhunt.de</email>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-    </developers>
     <!-- }}}1 -->
 
     <!-- environment information {{{1 -->
-    <!--scm> TODO
-        <connection>scm:git:https://github.com/thrawn-sh/subversion.git</connection>
-        <developerConnection>scm:git:https://scm.shadowhunt.de/subversion.git</developerConnection>
-        <tag>HEAD</tag>
-        <url>https://github.com/thrawn-sh/subversion</url>
-    </scm-->
-
     <distributionManagement>
         <repository>
             <id>stages-integrations-build</id>
